@@ -1,26 +1,5 @@
-#!/usr/bin/env python3
 """
 Hamming (31,26) encoder
------------------------
-
-This script encodes an arbitrary binary input using the Hamming (31,26) block code.
-
-Hamming codes are linear error‑detecting and error‑correcting codes that add parity
-bits to data blocks. The (31,26) variant uses 26 data bits and 5 parity bits to
-form a 31‑bit codeword. Each parity bit covers positions whose indices have the
-corresponding bit set when expressed in binary (1‑based indexing). Parity is
-computed using even parity: the XOR of the covered bits (including the parity
-position) should equal zero.
-
-The script reads either a binary string provided via `--bits` or reads a file
-containing binary digits. The input is segmented into 26‑bit chunks; the final
-chunk is padded with zeros if necessary. For each chunk, a 31‑bit codeword is
-produced and written to the specified output file or printed to standard output.
-
-Usage examples:
-
-  python3 hamming_31_26_encoder.py --bits 1011001110
-  python3 hamming_31_26_encoder.py --file example_input_bits.txt --out encoded.txt
 """
 
 import argparse
@@ -28,7 +7,6 @@ from typing import List
 
 
 def parse_args() -> argparse.Namespace:
-    """Parse command line arguments."""
     parser = argparse.ArgumentParser(description="Encode binary input using Hamming (31,26).")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument('--bits', type=str, help='Binary string to encode.')
